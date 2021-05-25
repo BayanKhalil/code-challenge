@@ -6,20 +6,12 @@ Write a function that accepts an array of strings. Return the longest string.
 ------------------------------------------------------------------------------------------------ */
 
 const longestString = (arr) => {
-//     arr.reduce((a,b)=>{
-//         a.length>b.length?a:b
-//     },"")
-// return arr
-
-
-arr.forEach((a,b)=>{
-    if(a.length>b.length){
-        return a
-    }else{
-        return b
-    }
+let y=arr.reduce((acc,value)=>{
+    return acc.length>value.length?acc:value;
 })
-};
+return y
+}
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -36,14 +28,20 @@ isSimilar("cat","act")
 ------------------------------------------------------------------------------------------------ */
 
 const isSimilar = (arr) => {
-    arr.split('').filter((a,b)=>{
-        if(a.length.includes(b.length)){
-            return true
-        }else{
-            return false
-        }
-        
-    })
+    let cond = true;
+    
+    if(!(arr==[] || arr[0] || arr[1])){
+        cond = false
+    }else{
+        let str1 = arr[0].split('');
+    let str2 = arr[1].split('');
+        str1.forEach(element => {
+            if(!str2.includes(element)){
+                cond = false;
+            }
+        });
+    }
+    return cond;
 };
 
 /* ------------------------------------------------------------------------------------------------
